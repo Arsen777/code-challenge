@@ -37,7 +37,8 @@ function createGridItem(beer: Beer): HTMLElement {
   abv.className = "beer-abv";
   
   const abvNumber = document.createElement("p");
-  abvNumber.textContent = beer.abv;
+  abvNumber.textContent = `${beer.abv}%`;
+  abvNumber.className = "beer-abv-number";
 
   abv.appendChild(abvNumber);
 

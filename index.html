@@ -16,6 +16,29 @@
     />
   </head>
   <body>
+    <!-- Main container for the beer grid -->
+    <div id="grid-container" class="grid"></div>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <button id="dropdown-button">Show Dropdown</button>
+        <div id="dropdown" class="dropdown hidden">
+          <ul>
+            <li>
+              Level 1
+              <ul>
+                <li>Level 2</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <button id="close-modal">Close</button>
+      </div>
+    </div>
+
     <!-- Script to handle TypeScript output -->
     <script src="dist/script.js"></script>
   </body>

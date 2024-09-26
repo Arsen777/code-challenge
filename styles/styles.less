@@ -1,0 +1,53 @@
+@theme: {
+  bg1: #ff9999;
+  bg2: #ffcc99;
+  bg3: #ffff99;
+  bg4: #ccff99;
+  bg5: #99ff99;
+  bg6: #99ffcc;
+  bg7: #99ffff;
+  bg8: #99ccff;
+  bg9: #9999ff;
+};
+
+.grid {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+@media (orientation: portrait) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (orientation: landscape) {
+  .grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+.grid-item {
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  display: none;
+}
+
+.dropdown {
+  display: none;
+}
+
+.dropdown.visible {
+  display: block;
+}

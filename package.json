@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "ts": "tsc",
-    "less": "lessc styles.less styles.css --source-map --compress",
+    "less": "lessc styles/styles.less dist/styles.css --source-map --compress",
     "build": "npm run less && npm run ts",
-    "serve": "live-server"
+    "start": "live-server"
   },
   "keywords": [],
   "author": "",

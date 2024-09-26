@@ -1,6 +1,6 @@
 {
-  "filename": "styles/styles.less",
-  "output": "dist/styles.css",
+  "filename": "./styles/styles.less",
+  "output": "./dist/styles.css",
   "compress": true,
   "sourceMap": {
     "sourceMapFileInline": true

@@ -19,10 +19,14 @@
 }
 
 .grid-item {
-  padding: 20px;
-  color: white;
+  padding: 20px 20px 75px;
+  color: @white;
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .beer-image {
@@ -30,7 +34,12 @@
 }
 
 .beer-title {
+  position: absolute;
   color: @black;
+  bottom: 0;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .beer-ibu {

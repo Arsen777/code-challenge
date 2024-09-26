@@ -22,46 +22,34 @@
   padding: 20px;
   color: white;
   text-align: center;
-}
-
-.grid-item.bg1 {
-  background-color: @bg1;
-}
-
-.grid-item.bg2 {
-  background-color: @bg2;
-}
-
-.grid-item.bg3 {
-  background-color: @bg3;
-}
-
-.grid-item.bg4 {
-  background-color: @bg4;
-}
-
-.grid-item.bg5 {
-  background-color: @bg5;
-}
-
-.grid-item.bg6 {
-  background-color: @bg6;
-}
-
-.grid-item.bg7 {
-  background-color: @bg7;
-}
-
-.grid-item.bg8 {
-  background-color: @bg8;
-}
-
-.grid-item.bg9 {
-  background-color: @bg9;
+  position: relative;
 }
 
 .beer-image {
-  width: 70px;
+  width: 100%;
+}
+
+.beer-title {
+  color: @black;
+}
+
+.beer-ibu {
+  position: absolute;
+  bottom: 25%;
+  padding: 10px;
+  left: 0;
+  background: @black;
+}
+
+.beer-abv {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-top: 50px solid #fff0f0;
 }
 
 .modal {

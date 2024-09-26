@@ -1,12 +1,12 @@
 interface Beer {
-  title: string;
+  name: string;
   ibu: number;
-  abv: number;
-  imageUrl: string;
+  abv: string;
+  image_url: string;
   description: string;
 }
 
-async function fetchBeers() {
+async function fetchBeers(): Promise<Beer[]> {
   const response = await fetch(
     "https://api.jsonbin.io/v3/b/6630fd9be41b4d34e4ecd1f9"
   );
@@ -25,23 +25,31 @@ function createGridItem(beer: Beer): HTMLElement {
   const gridItem = document.createElement("div");
   gridItem.className = `grid-item ${getBackgroundClass(beer.ibu)}`;
 
-  const title = document.createElement("h3");
-  title.textContent = beer.title;
+  const name = document.createElement("h3");
+  name.textContent = beer.name;
+  name.className = "beer-title";
 
   const ibu = document.createElement("p");
   ibu.textContent = `IBU: ${beer.ibu}`;
+  ibu.className = "beer-ibu";
 
-  const abv = document.createElement("p");
-  abv.textContent = `ABV: ${beer.abv}`;
+  const abv = document.createElement("div");
+  abv.className = "beer-abv";
+  
+  const abvNumber = document.createElement("p");
+  abvNumber.textContent = beer.abv;
+
+  abv.appendChild(abvNumber);
 
   const img = document.createElement("img");
-  img.src = beer.imageUrl;
-  img.alt = beer.title;
+  img.src = beer.image_url;
+  img.alt = beer.name;
+  img.className = "beer-image";
 
-  gridItem.appendChild(title);
-  gridItem.appendChild(ibu);
   gridItem.appendChild(abv);
   gridItem.appendChild(img);
+  gridItem.appendChild(ibu);
+  gridItem.appendChild(name);
 
   gridItem.addEventListener("click", () => showModal(beer));
 
@@ -51,7 +59,7 @@ function createGridItem(beer: Beer): HTMLElement {
 function showModal(beer: Beer): void {
   const modal = document.getElementById("modal")!;
 
-  document.getElementById("modal-title")!.textContent = beer.title;
+  document.getElementById("modal-title")!.textContent = beer.name;
   document.getElementById("modal-description")!.textContent = beer.description;
 
   modal.style.display = "block";

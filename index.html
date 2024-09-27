@@ -22,6 +22,7 @@
     <!-- Modal Structure -->
     <div id="modal" class="modal hidden">
       <div class="modal-content">
+        <span id="close-modal-icon" class="close-icon">&times;</span>
         <h2 id="modal-title"></h2>
         <p id="modal-description"></p>
         <button id="dropdown-button">Show Dropdown</button>
@@ -29,13 +30,13 @@
           <ul>
             <li>
               Level 1
-              <ul>
-                <li>Level 2</li>
+              <ul id="level-2" class="hidden">
+                <li>Option 1</li>
+                <li>Option 2</li>
               </ul>
             </li>
           </ul>
         </div>
-        <button id="close-modal">Close</button>
       </div>
     </div>
 

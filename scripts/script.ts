@@ -96,12 +96,35 @@ function toggleDropdown(): void {
   dropdown.classList.toggle("visible");
 }
 
-// Add event listeners for closing the modal and showing the dropdown
+function toggleNestedDropdown(event: MouseEvent): void {
+  event.stopPropagation(); // Prevent the event from bubbling up
+
+  // Cast currentTarget to HTMLElement
+  const target = event.currentTarget as HTMLElement;
+  const nestedDropdown = target.querySelector("ul");
+
+  // Toggle the visibility of the nested dropdown
+  if (nestedDropdown) {
+    nestedDropdown.classList.toggle("visible");
+    target.classList.toggle("active"); // Add or remove active class
+  }
+}
+
+// Ensure that clicking on nested dropdown items does not close the dropdown
 function initializeEventListeners(): void {
-  document.getElementById("close-modal-icon")!.addEventListener("click", hideModal);
-  document
-    .getElementById("dropdown-button")!
-    .addEventListener("click", toggleDropdown);
+  const closeModalIcon = document.getElementById("close-modal-icon")!;
+
+  closeModalIcon.addEventListener("click", hideModal);
+
+  const dropdownButton = document.getElementById("dropdown-button")!;
+
+  dropdownButton.addEventListener("click", toggleDropdown);
+
+  const levelOneItems = document.querySelectorAll<HTMLElement>(".level-1")!;
+
+  levelOneItems.forEach((item) => {
+    item.addEventListener("click", toggleNestedDropdown);
+  });
 }
 
 // Initialize the app by fetching beers and populating the grid
@@ -109,9 +132,9 @@ async function initializeApp() {
   const beers = await fetchBeers();
   const gridContainer = document.getElementById("grid-container")!;
 
+  // Ensure gridContainer is not null
   beers.forEach((beer) => {
     const gridItem = createGridItem(beer);
-
     gridContainer.appendChild(gridItem);
   });
 

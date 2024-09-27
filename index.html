@@ -25,14 +25,35 @@
         <span id="close-modal-icon" class="close-icon">&times;</span>
         <h2 id="modal-title"></h2>
         <p id="modal-description"></p>
-        <button id="dropdown-button">Show Dropdown</button>
+        <button id="dropdown-button">
+          Order <span class="arrow-down">▼</span>
+        </button>
+
+        <!-- Dropdown Menu -->
         <div id="dropdown" class="dropdown hidden">
           <ul>
-            <li>
-              Level 1
-              <ul id="level-2" class="hidden">
-                <li>Option 1</li>
-                <li>Option 2</li>
+            <li class="level-1">
+              Glass <span class="arrow-right">►</span>
+              <ul class="nested-dropdown hidden">
+                <li class="nested-item">1</li>
+                <li class="nested-item">2</li>
+                <li class="nested-item">3</li>
+              </ul>
+            </li>
+            <li class="level-1">
+              Can <span class="arrow-right">►</span>
+              <ul class="nested-dropdown hidden">
+                <li class="nested-item">1</li>
+                <li class="nested-item">2</li>
+                <li class="nested-item">3</li>
+              </ul>
+            </li>
+            <li class="level-1">
+              Box <span class="arrow-right">►</span>
+              <ul class="nested-dropdown hidden">
+                <li class="nested-item">1</li>
+                <li class="nested-item">2</li>
+                <li class="nested-item">3</li>
               </ul>
             </li>
           </ul>

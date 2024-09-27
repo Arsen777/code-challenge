@@ -1,0 +1,79 @@
+
+
+// Dropdown Styles
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  padding: 0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  width: 210px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 101;
+  right: -25px;
+
+  &.visible {
+    display: block; // Show dropdown when visible
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 12px 15px; // Padding for each item
+      cursor: pointer;
+      background-color: #f9f9f9; // Light background color for items
+      margin: 0; // No margin between items
+      border-radius: 5px; // Rounded corners for items
+      transition: background-color 0.2s; // Smooth background transition
+
+      // Arrow Right Icon
+      .arrow-right {
+        position: absolute;
+        right: 15px; // Adjust as necessary
+        font-size: 14px;
+        color: #666; // Gray color for arrow
+      }
+
+      &:hover {
+        background-color: #e2e2e2; // Change background on hover
+      }
+
+      // Nested Dropdown Styles
+      ul {
+        display: none; // Hidden by default
+        margin-top: 0; // No margin to keep it compact
+        padding-left: 20px;
+
+        li {
+          background-color: #f0f0f0; // Nested item background color
+
+          // Set height to match parent item
+          height: 40px;
+
+          &:hover {
+            background-color: #dcdcdc; // Change background on hover
+          }
+        }
+      }
+
+      .level-1.active > ul {
+        display: block; // Show nested dropdown when active
+      }
+
+      // Show/hide nested dropdown on parent item click
+      &.has-nested {
+        cursor: pointer;
+
+        // Show nested dropdown when active
+        &.active > ul {
+          display: block; // Show nested dropdown when active
+        }
+      }
+    }
+  }
+}

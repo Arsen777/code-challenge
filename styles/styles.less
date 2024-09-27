@@ -83,7 +83,7 @@
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 100;
-  width: 80%;
+  width: 50%;
   max-width: 800px;
 
   &.hidden {
@@ -96,6 +96,9 @@
 
     .modal-body {
       display: flex;
+      width: 100%;
+      justify-content: space-between;
+      padding: 0 20px 0 0;
     }
 
     .modal-left {
@@ -142,37 +145,45 @@
       // ABV Indicator
       .abv-indicator {
         position: absolute;
-        bottom: -20%;
+        bottom: 5%;
         padding: 5px;
         border-radius: 5px;
         font-weight: bold;
-        left: 33%;
+        left: 40%;
+      }
+
+      .modal-title {
+        margin: 0;
+        margin-top: 30px;
+        font-size: 24px;
+        text-align: center;
       }
     }
 
     .modal-right {
       flex: 2; // Allow the right section to take more space
       margin-left: 20px; // Space between left and right
-
-      .modal-title {
-        margin: 0;
-        font-size: 24px;
-      }
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: self-end;
 
       .modal-description {
         margin: 10px 0;
         font-size: 16px;
       }
 
-      .order-button {
+      #order-button {
         background-color: #3498db;
         color: white;
         border: none;
         border-radius: 6px;
-        padding: 10px 15px; // Padding for the button
+        padding: 10px 15px;
         cursor: pointer;
         transition: background-color 0.3s;
-        width: 100%; // Full width
+        width: 100%;
+        position: relative;
+        width: 150px;
 
         .arrow-down {
           margin-left: 5px;
@@ -188,18 +199,17 @@
 
 // Dropdown Styles
 .dropdown {
-  display: none; // Initially hidden
-  position: absolute; // Position absolutely
-  top: 100%; // Position it directly below the button
-  left: 0; // Align to the left of the button
-  margin-top: 5px; // Space between the button and dropdown
-  padding: 0; // No padding for the dropdown
+  display: none;
+  position: absolute;
+  top: 100%;
+  padding: 0;
   border-radius: 6px;
-  background-color: #ffffff; // White background for dropdown
-  border: 1px solid #ccc; // Light border for dropdown
-  width: 100%; // Match the width of the parent button
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); // Soft shadow for dropdown
-  z-index: 101; // Ensure it appears above the modal
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  width: 210px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 101;
+  right: -25px;
 
   &.visible {
     display: block; // Show dropdown when visible
@@ -265,24 +275,10 @@
   }
 }
 
-// Dropdown Button Styles
-button#dropdown-button {
-  background-color: #3498db; // Primary button color
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 15px; // Padding for the button
+#close-modal-icon {
+  font-size: 24px;
   cursor: pointer;
-  transition: background-color 0.3s; // Smooth background transition
-  width: 100%; // Make the button full width
-  position: relative; // Position relative for dropdown
-
-  // Arrow Down Icon
-  .arrow-down {
-    margin-left: 5px; // Space between text and arrow
-  }
-
-  &:hover {
-    background-color: #2980b9; // Darker shade on hover
-  }
+  position: absolute; // Position it in the top-right corner
+  top: 10px;
+  right: 15px;
 }

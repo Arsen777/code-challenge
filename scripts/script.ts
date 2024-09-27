@@ -129,9 +129,9 @@ function initializeEventListeners(): void {
 
   closeModalIcon.addEventListener("click", hideModal);
 
-  const dropdownButton = document.getElementById("dropdown-button")!;
+  const orderButton = document.getElementById("order-button")!;
 
-  dropdownButton.addEventListener("click", toggleDropdown);
+  orderButton.addEventListener("click", toggleDropdown);
 
   const levelOneItems = document.querySelectorAll<HTMLElement>(".level-1")!;
 

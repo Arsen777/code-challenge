@@ -1,6 +1,10 @@
-import { Beer } from "../types/beer";
-import { hideModal, showModal } from "./modal";
-import { toggleDropdown, toggleNestedDropdown } from "./dropdown";
+interface Beer {
+  name: string;
+  ibu: number;
+  abv: string;
+  image_url: string;
+  description: string;
+}
 
 // Fetch beers from the API
 async function fetchBeers(): Promise<Beer[]> {
@@ -68,7 +72,77 @@ function createGridItem(beer: Beer): HTMLElement {
   return gridItem;
 }
 
-// Ensure that clicking on nested dropdown items does not close the dropdown
+// Toggle the dropdown visibility
+function toggleDropdown(event: MouseEvent): void {
+  event.stopPropagation();
+
+  const dropdown = document.getElementById("dropdown");
+
+  if (dropdown) {
+    dropdown.classList.toggle("visible");
+  }
+}
+
+// Toggle nested dropdown visibility
+function toggleNestedDropdown(event: MouseEvent): void {
+  event.stopPropagation();
+
+  const target = event.currentTarget as HTMLElement; // The clicked parent item
+  const nestedDropdown = target.querySelector(
+    ".nested-dropdown"
+  ) as HTMLElement;
+
+  const dropdown = document.getElementById("dropdown")!;
+  const levelOneItems = dropdown.querySelectorAll(".level-1");
+
+  // Remove active class from other items
+  levelOneItems.forEach((item) => {
+    if (item !== target) {
+      const nested = item.querySelector(".nested-dropdown") as HTMLElement;
+
+      if (nested) nested.classList.remove("visible");
+
+      item.classList.remove("active");
+    }
+  });
+
+  if (nestedDropdown) {
+    nestedDropdown.classList.toggle("visible");
+
+    target.classList.toggle("active"); // Add or remove active class
+  }
+}
+
+// Show the modal with the selected beer's details
+function showModal(beer: Beer): void {
+  const modal = document.getElementById("modal")!;
+  const ibuText = document.getElementById("ibu-text") as HTMLElement;
+  const abvText = document.getElementById("abv-text") as HTMLElement;
+  const beerImage = document.getElementById(
+    "modal-beer-image"
+  ) as HTMLImageElement;
+
+  if (modal) {
+    (document.getElementById("modal-title") as HTMLElement).textContent =
+      beer.name;
+    (document.getElementById("modal-description") as HTMLElement).textContent =
+      beer.description;
+
+    ibuText.innerHTML = `IBU <br> ${beer.ibu}`;
+    abvText.textContent = `${beer.abv}%`;
+    beerImage.src = beer.image_url;
+
+    modal.style.display = "block";
+  }
+}
+
+// Hide the modal
+function hideModal(): void {
+  const modal = document.getElementById("modal")!;
+  modal.style.display = "none";
+}
+
+// Initialize event listeners
 function initializeEventListeners(): void {
   const closeModalIcon = document.getElementById("close-modal-icon")!;
 
@@ -78,10 +152,23 @@ function initializeEventListeners(): void {
 
   orderButton.addEventListener("click", toggleDropdown);
 
-  const levelOneItems = document.querySelectorAll<HTMLElement>(".level-1")!;
+  const levelOneItems = document.querySelectorAll<HTMLElement>(".level-1");
 
   levelOneItems.forEach((item) => {
     item.addEventListener("click", toggleNestedDropdown);
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", (event) => {
+    const dropdown = document.getElementById("dropdown");
+
+    if (dropdown && !dropdown.contains(event.target as Node)) {
+      dropdown.classList.remove("visible");
+      dropdown
+        .querySelectorAll(".nested-dropdown")
+        .forEach((nested) => nested.classList.remove("visible"));
+      levelOneItems.forEach((item) => item.classList.remove("active"));
+    }
   });
 }
 

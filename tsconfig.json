@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "target": "es5",
-    "module": "es6",
-    "strict": true,
-    "lib": ["ES2015", "DOM"],
-    "esModuleInterop": true
-  }
+    "target": "ES6",              // Use ES6 target
+    "module": "none",              // Compile to a single file without modules
+    "outFile": "./dist/index.js", // Output to a single file
+    "strict": true,                // Enable strict type-checking options
+    "esModuleInterop": true,       // Enables emit interoperability between CommonJS and ES Modules
+    "lib": ["ES2015", "DOM"]      // Include necessary libraries
+  },
+  "include": [
+    "scripts/*.ts"              // Include all .ts files in scripts
+  ],
+  "exclude": [
+    "node_modules"                 // Exclude node_modules
+  ]
 }

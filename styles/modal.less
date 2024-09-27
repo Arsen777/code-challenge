@@ -9,8 +9,7 @@
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 100;
-  width: 50%;
-  max-width: 800px;
+  width: 550px;
 
   &.hidden {
     display: none;
@@ -39,8 +38,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid #ccc;
-        background-color: #f9f9f9;
+        border: 2px solid @white;
+        background-color: @light-grey;
 
         .beer-image {
           width: 50px;
@@ -51,12 +50,12 @@
       }
 
       .info-circle {
-        position: absolute; // Absolute positioning for overlay
+        position: absolute;
         top: 20px;
         left: 20px;
         display: flex;
         flex-direction: column;
-        gap: 10px; // Space between circles
+        gap: 10px;
       }
 
       .ibu-indicator {
@@ -87,8 +86,8 @@
     }
 
     .modal-right {
-      flex: 2; // Allow the right section to take more space
-      margin-left: 20px; // Space between left and right
+      flex: 2;
+      margin-left: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -100,8 +99,8 @@
       }
 
       #order-button {
-        background-color: #3498db;
-        color: white;
+        background-color: @sky-blue;
+        color: @white;
         border: none;
         border-radius: 6px;
         padding: 10px 15px;
@@ -116,7 +115,7 @@
         }
 
         &:hover {
-          background-color: #2980b9;
+          background-color: @strong-blue;
         }
       }
     }
@@ -126,7 +125,7 @@
 #close-modal-icon {
   font-size: 24px;
   cursor: pointer;
-  position: absolute; // Position it in the top-right corner
+  position: absolute;
   top: 10px;
   right: 15px;
 }
